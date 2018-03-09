@@ -3,14 +3,12 @@ import random
 from scipy import optimize
 import numpy as np
 import matplotlib.pyplot as plt
-from memory_profiler import profile
 
 
-@profile()
 def display_plot():
-    x = np.arange(-10, 10, 1e-5)  # making an array of arguments from -10 to 10 with step 10e-5
+    x = np.arange(-10, 10, 1e-5)  # an array of arguments from -10 to 10 with step 10e-5
     func = (1.0 / np.tan(x)) - ((3.0 * x) / 4.0)
-    plt.plot(x, func, 'g')  # set curves and it's color for plot
+    plt.plot(x, func, 'g')  # set curves and it's plot color
     plt.title('(1/ctg(x)) - (3/4)*x = 0')
     plt.axis([-3, 4, -10, 10])
     plt.grid(True)
@@ -68,9 +66,9 @@ def simple_iteration_method(func, a, b, eps):
 
     # determine the value of g(x) depending on derivative's local maximum
     if local_max_f.fun > 0:
-        def g(c): return c + (1.0 / local_max_f.x) * f(c)
+        def g(x): return x + (1.0 / local_max_f.x) * f(x)
     else:
-        def g(c): return c - (1.0 / local_max_f.x) * f(c)
+        def g(x): return x - (1.0 / local_max_f.x) * f(x)
 
     iteration = 0
 
