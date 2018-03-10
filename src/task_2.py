@@ -9,7 +9,7 @@ def display_plot():
     x = np.arange(-10, 10, 1e-5)  # an array of arguments from -10 to 10 with step 10e-5
     func = np.sin(x**2) - 6*x + 1
     plt.plot(x, func, 'g')  # set curves and it's plot color
-    plt.title('(sin(x^2)-6x+1')
+    plt.title(' sin(x^2)-6x+1')
     plt.axis([-10, 10, -60, 60])
     plt.grid(True)
     plt.show()
@@ -21,25 +21,24 @@ def f(x: float):
 
 def method_of_chords(func, a, b, eps=10e-5):
 
-    x = float(random.uniform(a, b))
-
     def derivative_f(x):
-        return (func(x + eps) - func(x)) / (func(x + eps) - x)
-    
-    if derivative_f(x) > 0:
-        def g(c):
-            return a + func(a) / (func(c) - func(a)) * (c - a)
+        return (func(x + eps) - func(x)) / eps
+
+    x_0 = float(random.uniform(a, b))  # initial approximation of the root
+
+    if derivative_f(x_0) > 0:
+        def g(x):
+            return a + func(a) / (func(x) - func(a)) * (x - a)
         x_n = b
     else:
-        def g(c):
-            return c - func(c) / (func(b) - func(c)) * (b - c)
+        def g(x):
+            return x - func(x) / (func(b) - func(x)) * (b - x)
         x_n = a
 
     iteration = 0
 
     # chords method step
     while math.fabs(func(x_n)) > eps:
-
         x_n = g(x_n)
         iteration += 1
 
@@ -51,10 +50,10 @@ def aitken_method(func, a, b, eps=10e-5):
     def derivative_f(x):
         return (func(x + eps) - func(x)) / (func(x + eps) - x)
 
+    # local maximum at the segment [a,b]
     derivative_local_max = optimize.minimize_scalar(derivative_f, bounds=(a, b), method='bounded')
 
-    # Let be g(x) = x - 1/M * func(x)
-    # determine the value of g(x) depending on derivative's local maximum
+    # Let be g(x) = x +- 1/M * func(x)
     if derivative_local_max.fun > 0:
         def g(c):
             return c + (1.0 / derivative_local_max.x) * f(c)
@@ -62,22 +61,24 @@ def aitken_method(func, a, b, eps=10e-5):
         def g(c):
             return c - (1.0 / derivative_local_max.x) * f(c)
         
-    # iterative step
-    x_0 = float(random.uniform(a, b))
+    # do-while analog
+    x_0 = float(random.uniform(a, b))  # as usual, set initial approximation
+
     x_1 = g(x_0)
     x_2 = g(x_1)
-    x_temp = (x_0 * x_2 - x_1 ** 2) / (x_2 - 2 * x_1 + x_0)
-    x_3 = g(x_temp)
+    x_i = (x_0 * x_2 - x_1 ** 2) / (x_2 - 2 * x_1 + x_0)
+    x_3 = g(x_i)
 
-    # iteration step
+    # iterative step
     iteration = 0
+
     while math.fabs(func(x_3)) > eps:
-        x_0 = x_temp
+        x_0 = x_i
         x_2 = g(x_1)
         x_1 = x_3
 
-        x_temp = (x_0 * x_2 - x_1 ** 2) / (x_2 - 2 * x_1 + x_0)
-        x_3 = g(x_temp)
+        x_i = (x_0 * x_2 - x_1 ** 2) / (x_2 - 2 * x_1 + x_0)
+        x_3 = g(x_i)
         iteration += 1
 
     return x_3, iteration
@@ -85,13 +86,14 @@ def aitken_method(func, a, b, eps=10e-5):
 
 def steffensen_method(func, a, b, eps=10e-5):
 
-    x_n = float(random.uniform(a, b))
+    x_n = float(random.uniform(a, b))  # select initial approximation
 
     def g(x):
         return x - (func(x) ** 2) / (func(x) - func(x - func(x)))
 
-    # iteration step
     iteration = 0
+
+    # iterative step
     while math.fabs(func(x_n)) > eps:
         x_n = g(x_n)
         iteration += 1

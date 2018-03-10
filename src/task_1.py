@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 def display_plot():
     x = np.arange(-10, 10, 1e-5)  # an array of arguments from -10 to 10 with step 10e-5
     func = (1.0 / np.tan(x)) - ((3.0 * x) / 4.0)
-    plt.plot(x, func, 'g')  # set curves and it's plot color
+    plt.plot(x, func, 'g')  # set curves to the plot and it's color
     plt.title('(1/ctg(x)) - (3/4)*x = 0')
     plt.axis([-3, 4, -10, 10])
     plt.grid(True)
@@ -40,14 +40,16 @@ def bisection_method(func, a, b, eps):
     return x, func(x), iteration
 
 
-def newtons_method(func, x, eps):
+def newton_method(func, x, eps):
+
+    # calculate derivative of the function according to I'ts common definition
+    def derivative_f(x):
+        return (func(x + eps) - func(x)) / eps
+
     delta_x = math.fabs(func(x))
     iteration = 0
 
-    # calculate derivative of the function according to i'ts definition
-    def derivative_f(x):
-        return (func(x + eps) - func(x)) / ((x + eps) - x)
-
+    # iterative step
     while delta_x > eps:
         x = x - func(x) / derivative_f(x)
         delta_x = math.fabs(func(x))
@@ -60,29 +62,29 @@ def simple_iteration_method(func, a, b, eps):
     # determine derivative of the function and it's local maximum at the segment [a,b]
     # try also scipy.misc.derivative(func, lower_bound, upper_bound, order_of_derivative)
     def derivative_f(x):
-        return (func(x + eps) - func(x)) / (func(x + eps) - x)
+        return (func(x + eps) - func(x)) / eps
 
-    local_max_f = optimize.minimize_scalar(derivative_f, bounds=(a, b), method='bounded')
+    derivative_local_max = optimize.minimize_scalar(derivative_f, bounds=(a, b), method='bounded')
 
     # determine the value of g(x) depending on derivative's local maximum
-    if local_max_f.fun > 0:
-        def g(x): return x + (1.0 / local_max_f.x) * f(x)
+    if derivative_local_max.fun > 0:
+        def g(x): return x + (1.0 / derivative_local_max.x) * f(x)
     else:
-        def g(x): return x - (1.0 / local_max_f.x) * f(x)
+        def g(x): return x - (1.0 / derivative_local_max.x) * f(x)
 
     iteration = 0
 
     # select x from the segment
-    x = float(random.uniform(a, b))
+    x_n = float(random.uniform(a, b))
 
     # sufficient condition for convergence
-    if a <= g(x) <= b:
+    if a <= g(x_n) <= b:
         # iterative step
-        while math.fabs(func(x)) > eps:
-            x = g(x)
+        while math.fabs(func(x_n)) > eps:
+            x_n = g(x_n)
             iteration += 1
 
-        return x, func(x), iteration  # OK
+        return x_n, func(x_n), iteration  # OK
     else:
         return float('Inf')  # iterative process is divergent
 
@@ -94,7 +96,7 @@ def main():
         lower, upper = float(input('lower bound: ')), float(input('upper bound: '))
         approx_root = float(input('Initial approximation of root: '))  # good enough [-0.88, 1, 3.5]
         bisection_res = bisection_method(f, lower, upper, 10e-6)
-        newton_res = newtons_method(f, approx_root, 10e-5)
+        newton_res = newton_method(f, approx_root, 10e-5)
         iteration_res = simple_iteration_method(f, lower, upper, 10e-5)
         print("###\nBisection method for {}".format(n))
         print("Root is : {}\nf(x) at root is: {} iterations: {}\n###".format(*bisection_res))
