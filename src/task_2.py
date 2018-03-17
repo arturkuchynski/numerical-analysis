@@ -15,7 +15,7 @@ def display_plot():
     plt.show()
 
 
-def f(x: float):
+def f(x):
     return math.sin(x**2) - 6*x + 1
 
 
