@@ -5,7 +5,11 @@ Tasks from numerical analysis course on Python 3.x
 
 > Task №2 tested, completed
 
-> Task №3 will be done soon
+> Task №3 completed, works well
+
+> Task №4-5 completed, lambda coefficients need to be calculated for iteration method
+
+> Task №6 will be added soon
 
 matplotlib==2.1.2,
 numpy==1.14.0,
