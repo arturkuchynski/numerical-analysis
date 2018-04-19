@@ -26,4 +26,5 @@ scipy==1.0.0
 are required
 
 
-special thanks to @Zaharov98
+special thanks to  [a@Zaharov98](https://github.com/Zaharov98)
+
