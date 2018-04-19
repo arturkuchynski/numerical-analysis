@@ -3,7 +3,6 @@ import numpy as np
 
 class SecondSystem:
 
-    #  optional: mark methods as static with @staticmethod
     def f1(self, x, y):
         return np.sin(y + x) - 1.5 * x + 0.1
 

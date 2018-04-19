@@ -6,6 +6,11 @@ import numpy.linalg
 from first_system import FirstSystem
 from second_system import SecondSystem
 
+"""
+    Laboratory task №4-5
+    Variant 12, Artur Kuchynski
+"""
+
 
 def newton_method(system, init_x, init_y,  eps=1e-5):
 
@@ -35,23 +40,24 @@ def newton_method(system, init_x, init_y,  eps=1e-5):
 
 def iteration_method(system, init_x, init_y, eps=1e-5):
 
-    system_matrix = np.array([[system.df1dy(init_x, init_y), system.df2dy(init_x, init_y)],
+    derivative_matrix = np.array([[system.df1dy(init_x, init_y), system.df2dy(init_x, init_y)],
                            [system.df2dy(init_x, init_y), system.df2dx(init_x, init_y)]])
 
-    # making array of values for the variable x
-    x_values_row = np.array([-1, 0])
-    c11, c12 = np.linalg.solve(system_matrix, x_values_row) 
-    # making array of values for the variable y
-    y_values_row = np.array([0, -1])
-    c21, c22 = np.linalg.solve(system_matrix, y_values_row)
+    # column for augmented matrix x
+    x_matrix_column = np.array([-1, 0])
+    lambda_11, lambda_12 = np.linalg.solve(derivative_matrix, x_matrix_column)
+    # column for augmented matrix y
+    y_matrix_column = np.array([0, -1])
+    lambda_21, lambda_22 = np.linalg.solve(derivative_matrix, y_matrix_column)
 
     def iterative_function_x(x, y):
-        return x + c11 * system.f1(x, y) + c12 * system.f2(x, y)
+        return x + lambda_11 * system.f1(x, y) + lambda_12 * system.f2(x, y)
 
     def iterative_function_y(x, y):
-        return y + c21 * system.f1(x, y) + c22 * system.f2(x, y)
+        return y + lambda_21 * system.f1(x, y) + lambda_22 * system.f2(x, y)
 
     x_i, y_i = init_x, init_y
+
     # iterative step
     while math.fabs(system.f1(x_i, y_i)) > eps and math.fabs(system.f2(x_i, y_i)) > eps:
         x_temp, y_temp = x_i, y_i
@@ -63,12 +69,12 @@ def iteration_method(system, init_x, init_y, eps=1e-5):
 
 def main():
 
-    plots.display_plots()
+    plots.display_plot()
 
     with np.errstate(all='ignore'):
         system_dialog(FirstSystem(), "first system")
-        system_dialog(SecondSystem(), "1st point of second system,")
-        system_dialog(SecondSystem(), "2nd point")
+        system_dialog(SecondSystem(), "1st root of second system")
+        system_dialog(SecondSystem(), "2nd root of second system")
 
 
 # clear screen of command prompt/terminal using the following method

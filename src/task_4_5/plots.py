@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
-"""
-    Laboratory task №4-5
-    Variant 12, Artur Kuchynski
-"""
 
 
-def display_plots():
+def display_plot():
     x_first_range = np.arange(-7, 7, 1e-4)
     x_sec_range = np.arange(-2, 2, 1e-4)
 
