@@ -23,7 +23,6 @@ Every task is supplemented by graphical representation of the solution
 matplotlib==2.1.2,
 numpy==1.14.0,
 scipy==1.0.0
-are required
 
 
 special thanks to  [@Zaharov98](https://github.com/Zaharov98)
