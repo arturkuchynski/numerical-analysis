@@ -1,3 +1,5 @@
+
+
 import os
 import math
 import plots
@@ -24,7 +26,7 @@ def newton_method(system, init_x, init_y,  eps=1e-5):
 
         a2 = np.array([[system.df1dx(x_i, y_i), system.f1(x_i, y_i)],
                       [system.df2dx(x_i, y_i), system.f2(x_i, y_i)]])
-
+        
         # jacobian matrix
         jacobian = np.array([[system.df1dx(x_i, y_i), system.df2dx(x_i, y_i)],
                             [system.df1dy(x_i, y_i), system.df2dy(x_i, y_i)]])
@@ -49,12 +51,15 @@ def iteration_method(system, init_x, init_y, eps=1e-5):
     # column for augmented matrix y
     y_matrix_column = np.array([0, -1])
     lambda_21, lambda_22 = np.linalg.solve(derivative_matrix, y_matrix_column)
-
+    """
     def iterative_function_x(x, y):
         return x + lambda_11 * system.f1(x, y) + lambda_12 * system.f2(x, y)
 
     def iterative_function_y(x, y):
         return y + lambda_21 * system.f1(x, y) + lambda_22 * system.f2(x, y)
+    """
+    iterative_function_x = lambda x, y: x + lambda_11 * system.f1(x, y) + lambda_12 * system.f2(x, y)
+    iterative_function_y = lambda x, y: y + lambda_21 * system.f1(x, y) + lambda_22 * system.f2(x, y)
 
     x_i, y_i = init_x, init_y
 

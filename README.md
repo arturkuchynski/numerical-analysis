@@ -10,11 +10,13 @@ Every task is supplemented by graphical representation of the solution
 
 > Task №3 completed (Lobachevsky method)
 
-> Task №4-5 completed (Newton and Iterative methods of solving non-linear systems of equations)
+> Task №4-5 completed (Newton and Iterative methods of solving systems of non-linear equations)
 
-> Task №6  in progress, now testing(Newton polynomials: both straight and inverse)
+> Task №6  in progress, now testing(Newton interpolation: both straight and inverse)
 
-> Task №7 will be done during this week
+> Task №7 Lagrange polynomial interpolation
+
+> Task №8 
 
 **Waiting for Pull requests :)**
 
@@ -26,4 +28,4 @@ scipy==1.0.0
 are required
 
 
-special thanks to @Zaharov98
+special thanks to  [@Zaharov98](https://github.com/Zaharov98)
