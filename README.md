@@ -2,21 +2,25 @@
 
 **Tasks of numerical analysis course on Python 3**
 
-Every task is supplemented by graphical representation of the solution
+Every task is supplemented by graphical representation of the solution, where needed
 
-> Task №1 completed (Bisection, Newton and Iterative methods)
+> Task №1 Bisection, Newton and Iterative methods
 
-> Task №2 tested, completed (Aitken and Chords methods)
+> Task №2 Aitken and Chords methods
 
-> Task №3 completed (Lobachevsky method)
+> Task №3 Lobachevsky method
 
-> Task №4-5 completed (Newton and Iterative methods of solving systems of non-linear equations)
+> Task №4-5 Newton and Iterative methods of solving systems of non-linear equations
 
-> Task №6  in progress, now testing(Newton interpolation: both straight and inverse)
+> Task №6 Newton interpolation (both straight and inverse)
 
 > Task №7 Lagrange polynomial interpolation
 
-> Task №8 
+> Task №8 Quadratic spline interpolation 
+
+> Task №9 Least squares method of function approximation
+
+> Task №10 Numerical Integration methods
 
 **Waiting for Pull requests :)**
 
