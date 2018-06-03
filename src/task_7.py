@@ -42,9 +42,9 @@ def linear_interpolation(x_interp_nodes, y_interp_nodes, x_aitken):
 
 
 def display_plot(interpolation, x_interp_nodes, y_interp_nodes, x_aitken, y_aitken):
-    start, end, step = 0.3, 0.8, 0.001
+    a, end, step = 0.3, 0.8, 0.001
 
-    x_range = np.arange(start, end, step)
+    x_range = np.arange(a, end, step)
     y_range = np.array([interpolation(x) for x in x_range])
 
     plt.plot(x_range, y_range, label='Lagrange polynomial')

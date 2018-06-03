@@ -3,8 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/task_4_5" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/newton-interpolation-master" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/task_10" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

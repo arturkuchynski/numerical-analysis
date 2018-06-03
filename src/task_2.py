@@ -29,20 +29,20 @@ def method_of_chords(func, a, b, eps=10e-5):
     if derivative_f(x_0) > 0:
         def g(x):
             return a + func(a) / (func(x) - func(a)) * (x - a)
-        x_n = b
+        x_nodes = b
     else:
         def g(x):
             return x - func(x) / (func(b) - func(x)) * (b - x)
-        x_n = a
+        x_nodes = a
 
     iteration = 0
 
     # chords method step
-    while math.fabs(func(x_n)) > eps:
-        x_n = g(x_n)
+    while math.fabs(func(x_nodes)) > eps:
+        x_nodes = g(x_nodes)
         iteration += 1
 
-    return x_n, iteration
+    return x_nodes, iteration
 
 
 def aitken_method(func, a, b, eps=10e-5):
@@ -86,7 +86,7 @@ def aitken_method(func, a, b, eps=10e-5):
 
 def steffensen_method(func, a, b, eps=10e-5):
 
-    x_n = float(random.uniform(a, b))  # select initial approximation
+    x_nodes = float(random.uniform(a, b))  # select initial approximation
 
     def g(x):
         return x - (func(x) ** 2) / (func(x) - func(x - func(x)))
@@ -94,11 +94,11 @@ def steffensen_method(func, a, b, eps=10e-5):
     iteration = 0
 
     # iterative step
-    while math.fabs(func(x_n)) > eps:
-        x_n = g(x_n)
+    while math.fabs(func(x_nodes)) > eps:
+        x_nodes = g(x_nodes)
         iteration += 1
 
-    return x_n, iteration
+    return x_nodes, iteration
 
 
 def main():

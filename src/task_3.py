@@ -47,11 +47,11 @@ def lobachevsky_method(func, coefficients, eps=10e-5):
                                 func(-x2) < eps and func(x2) < eps) and (func(-x3) < eps and func(x3) < eps))
 
         if process_is_convergent:  # break process
-            for x_n in (x1, x2, x3):
-                if -func(x_n) < eps:
-                    roots.append(x_n)
-                elif func(x_n) < eps:
-                    roots.append(-x_n)
+            for x_nodes in (x1, x2, x3):
+                if -func(x_nodes) < eps:
+                    roots.append(x_nodes)
+                elif func(x_nodes) < eps:
+                    roots.append(-x_nodes)
             return roots
 
 

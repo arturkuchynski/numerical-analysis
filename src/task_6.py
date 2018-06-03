@@ -50,10 +50,10 @@ def divided_difference(x, y):
 
 def display_plot(interpolation, x_interp_nodes, y_interp_nodes):
 
-    # start, end, step = 0.000, 5.0001, 0.001
-    start, end, step = 0.18, 0.225, 0.0005  # try
-    # start, end, step = -4, 4, 0.001
-    x_range = np.arange(start, end, step)
+    # a, end, step = 0.000, 5.0001, 0.001
+    a, end, step = 0.18, 0.225, 0.0005  # try
+    # a, end, step = -4, 4, 0.001
+    x_range = np.arange(a, end, step)
     y_range = np.array([interpolation(arg) for arg in x_range])
 
     # x_sec_range = [0.1857, 0.2165, 0.198, 0.2209, 0.1908, 0.2189]

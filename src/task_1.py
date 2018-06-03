@@ -75,16 +75,16 @@ def simple_iteration_method(func, a, b, eps):
     iteration = 0
 
     # select x from the segment
-    x_n = float(random.uniform(a, b))
+    x_nodes = float(random.uniform(a, b))
 
     # sufficient condition for convergence
-    if a <= g(x_n) <= b:
+    if a <= g(x_nodes) <= b:
         # iterative step
-        while math.fabs(func(x_n)) > eps:
-            x_n = g(x_n)
+        while math.fabs(func(x_nodes)) > eps:
+            x_nodes = g(x_nodes)
             iteration += 1
 
-        return x_n, func(x_n), iteration  # OK
+        return x_nodes, func(x_nodes), iteration  # OK
     else:
         return float('Inf')  # iterative process is divergent
 
