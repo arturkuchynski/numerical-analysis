@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 .idea/*
-.idea/
+/.idea/
 .vscode/
 .vscode/*
 *.py[cod]
