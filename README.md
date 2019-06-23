@@ -22,8 +22,6 @@ Every task is supplemented by graphical representation of the solution, where ne
 
 > Task №10 Numerical Integration methods
 
-**Waiting for Pull requests :)**
-
 **requirements:**
 
 matplotlib==2.1.2,
