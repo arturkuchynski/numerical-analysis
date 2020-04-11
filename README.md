@@ -4,8 +4,6 @@ Yanka Kupala State University of Grodno
 
 **All methods from Numerical Analysis Course are implemented using Python 3**
 
-Each solution is supplemented by graphical representation of the solution, if required
-
 > Section №1 Bisection, Newton's and iterative methods
 
 > Section №2 Aitken's method for solving an equations
