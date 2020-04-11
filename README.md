@@ -1,33 +1,32 @@
-# Numerical analysis GRSU course 2018
+# Numerical Analysis, 2018
 
-**Tasks of numerical analysis course on Python 3**
+Yanka Kupala State University of Grodno
 
-Every task is supplemented by graphical representation of the solution, where needed
+**All methods from Numerical Analysis Course are implemented using Python 3**
 
-> Task №1 Bisection, Newton and Iterative methods
+Each solution is supplemented by graphical representation of the solution, if required
 
-> Task №2 Aitken and Chords methods
+> Section №1 Bisection, Newton's and iterative methods
 
-> Task №3 Lobachevsky method
+> Section №2 Aitken's method for solving an equations
 
-> Task №4-5 Newton and Iterative methods of solving systems of non-linear equations
+> Section №3 Lobachevsky's method
 
-> Task №6 Newton interpolation (both straight and inverse)
+> Section №4-5 Newton's and iterative methods for solving a system of nonlinear equations
 
-> Task №7 Lagrange polynomial interpolation
+> Section №6 Newton's forward and backward interpolation
 
-> Task №8 Quadratic spline interpolation 
+> Section №7 Lagrange polynomial interpolation
 
-> Task №9 Least squares method of function approximation
+> Section №8 Quadratic spline interpolation method
 
-> Task №10 Numerical Integration methods
+> Section №9 Least squares method for function approximation
+
+> *Section №10 Several methods for numerical integration
 
 **requirements:**
 
-matplotlib==2.1.2,
+```matplotlib==2.1.2,
 numpy==1.14.0,
 scipy==1.0.0
-are required
-
-
-special thanks to  [@Zaharov98](https://github.com/Zaharov98)
+```
